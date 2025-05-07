@@ -1,0 +1,20 @@
+{
+  "iconDefinitions": {
+    "_typst": {
+      "iconPath": "./favicon-16x16.png"
+    }
+  },
+  "fileExtensions": {
+    "typ": "_typst"
+  },
+  "light": {
+    "fileExtensions": {
+      "typ": "_typst"
+    }
+  },
+  "highContrast": {
+    "fileExtensions": {
+      "typ": "_typst"
+    }
+  }
+}
