@@ -84,3 +84,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 + add highlight on pagebreak or maybe italics to signify a page break (optional)
 + add highlight on emoji operators ( ex: \u{1ffff} )
 + add highlight to function parameters (optional)
++ fix indented + or - on other + or -
++ block math expressions ($$$$) do not exist remove the functionality and check for double types math operators
++ math operators $ x $ must have a space in them to be counted in numbering check for that
++ Fix multi line math expressions not being captured by regex and erroring
