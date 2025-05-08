@@ -4,10 +4,11 @@ import * as path from 'path';
 import { exec } from 'child_process';
 import { TypstLinter } from './linter';
 
+const linter = new TypstLinter();
+
 // Called when extension is activated
 export function activate(context: vscode.ExtensionContext) {
 	// Initialize the linter
-	const linter = new TypstLinter();
 	linter.activate(context);
 	context.subscriptions.push(linter);
 
@@ -57,5 +58,7 @@ function featureAdder(format: string): string {
 	return format.concat(` --features ${format} `);
 }
 
-// Cleanup logic if needed
-export function deactivate() {}
+// Cleanup linter
+export function deactivate() {
+	linter.dispose();
+}

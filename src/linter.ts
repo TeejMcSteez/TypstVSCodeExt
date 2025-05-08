@@ -58,7 +58,7 @@ export class TypstLinter {
                 const range = new vscode.Range(i, 0, i, line.length);
                 const diagnostic = new vscode.Diagnostic(
                     range,
-                    `Mismatched braces: ${openBraces} opening and ${closeBraces} closing`,
+                    `Mismatched braces: ${openBraces} opening & ${closeBraces} closing`,
                     vscode.DiagnosticSeverity.Warning
                 );
                 diagnostics.push(diagnostic);
@@ -112,7 +112,6 @@ export class TypstLinter {
             }
         }
 
-        // Warn about unused labels
         for (const label of labels) {
             if (!referenced.has(label)) {
                 const labelPos = text.indexOf(`@${label}`);
