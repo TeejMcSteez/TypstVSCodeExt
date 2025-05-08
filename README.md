@@ -33,7 +33,7 @@ Typst CLI
 
 ## Install
 
-- Download typstlangsupport-{version}.vsix
+- Download [typstlangsupport-{version}.vsix](https://github.com/TeejMcSteez/TypstVSCodeExt/blob/master/typstlangsupport-0.0.3.vsix)
 
 - Go to Extensions Pane in VSCode or Cursor
 
