@@ -2,9 +2,15 @@ import * as vscode from 'vscode';
 import * as os from 'os';
 import * as path from 'path';
 import { exec } from 'child_process';
+import { TypstLinter } from './linter';
 
 // Called when extension is activated
 export function activate(context: vscode.ExtensionContext) {
+	// Initialize the linter
+	const linter = new TypstLinter();
+	linter.activate(context);
+	context.subscriptions.push(linter);
+
 	context.subscriptions.push(
 		vscode.commands.registerCommand('typst-preview.compileAndShow', async () => {
 			const editor = vscode.window.activeTextEditor;
