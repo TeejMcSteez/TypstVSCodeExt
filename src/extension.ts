@@ -8,7 +8,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.commands.registerCommand('typst-preview.compileAndShow', async () => {
 			const editor = vscode.window.activeTextEditor;
-			if (!editor) return;
+			if (!editor) {return;};
 
 			const doc = editor.document;
 			const inputPath = doc.uri.fsPath;
