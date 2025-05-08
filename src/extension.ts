@@ -12,9 +12,18 @@ export function activate(context: vscode.ExtensionContext) {
 
 			const doc = editor.document;
 			const inputPath = doc.uri.fsPath;
-			const outputPath = getTempPdfPath(inputPath);
+			
+			// Get output format from settings
+			const config = vscode.workspace.getConfiguration('typst');
+			let format = config.get<string>('outputFormat') || 'pdf';
+			if (format === 'html') {
+				format = featureAdder(format);
+			}
+			
+			// Generate appropriate output path based on format
+			const outputPath = getTempOutputPath(inputPath, format.replace(' --features html ', ''));
 
-			exec(`typst compile "${inputPath}" "${outputPath}"`, (err, stdout, stderr) => {
+			exec(`typst compile --format ${format} "${inputPath}" "${outputPath}"`, (err, stdout, stderr) => {
 				if (err) {
 					const msg = stderr || stdout || err.message;
 					vscode.window.showErrorMessage(`Typst compile failed:\n${msg}`);
@@ -32,10 +41,14 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 }
 
-// Generate a unique output PDF path in the OS temp directory
-function getTempPdfPath(inputPath: string): string {
+// Generate a unique output path in the OS temp directory based on format
+function getTempOutputPath(inputPath: string, format: string): string {
 	const baseName = path.basename(inputPath, '.typ');
-	return path.join(os.tmpdir(), `typst-preview-${baseName}.pdf`);
+	return path.join(os.tmpdir(), `typst-preview-${baseName}.${format}`);
+}
+// Used for formats that require features (html currently)
+function featureAdder(format: string): string {
+	return format.concat(` --features ${format} `);
 }
 
 // Cleanup logic if needed
