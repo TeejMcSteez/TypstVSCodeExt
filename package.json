@@ -2,7 +2,7 @@
   "name": "typstlangsupport",
   "displayName": "TypstLangSupport",
   "description": "Syntax highlighting, auto preview, Linting",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.96.0"
   },
@@ -43,7 +43,18 @@
       "key": "ctrl+shift+v",
       "when": "editorLangId == typst"
     }
-  ]
+  ],
+    "configuration": {
+      "title": "Typst",
+      "properties": {
+        "typst.outputFormat": {
+          "type": "string",
+          "enum": ["pdf", "png", "svg", "html"],
+          "default": "pdf",
+          "description": "Output format for Typst compilation"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

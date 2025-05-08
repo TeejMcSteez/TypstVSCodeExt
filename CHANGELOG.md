@@ -47,3 +47,16 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 + VSCode engine & types from v1.99.0 -> v1.96.0 to support Cursor
 
+## [V0.0.3]
+
+- Configuration Settings
+
+### Added: Features
+
++ Extension now has setting so one can edit output format (pdf, png, svg, html)
+
+### Changed
+
++ package.json to reflect settings configuration
++ extensions.ts to handle getting the output config from the vscode setttings
++ typstlangsupport-0.0.3.vsix updated new version
