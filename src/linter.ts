@@ -85,13 +85,22 @@ export class TypstLinter {
     }
 
     private checkForInvalidReferences(text: string, document: vscode.TextDocument, diagnostics: vscode.Diagnostic[]) {
-        const refRegex = /@ref\(([^)]+)\)/g;
+        // Collect all label definitions of the form @labelname
+        const labelRegex = /@([a-zA-Z0-9_\-]+)/g;
+        const labels = new Set<string>();
+        let labelMatch;
+        while ((labelMatch = labelRegex.exec(text)) !== null) {
+            labels.add(labelMatch[1]);
+        }
+
+        // Find all <labelname> references
+        const refRegex = /<([a-zA-Z0-9_\-]+)>/g;
+        const referenced = new Set<string>();
         let match;
         while ((match = refRegex.exec(text)) !== null) {
             const refId = match[1];
-            // Check if the reference exists in the document
-            const refExists = text.includes(`#label(${refId})`);
-            if (!refExists) {
+            referenced.add(refId);
+            if (!labels.has(refId)) {
                 const pos = document.positionAt(match.index);
                 const range = new vscode.Range(pos, pos.translate(0, match[0].length));
                 const diagnostic = new vscode.Diagnostic(
@@ -102,9 +111,26 @@ export class TypstLinter {
                 diagnostics.push(diagnostic);
             }
         }
+
+        // Warn about unused labels
+        for (const label of labels) {
+            if (!referenced.has(label)) {
+                const labelPos = text.indexOf(`@${label}`);
+                if (labelPos !== -1) {
+                    const pos = document.positionAt(labelPos);
+                    const range = new vscode.Range(pos, pos.translate(0, label.length + 1));
+                    const diagnostic = new vscode.Diagnostic(
+                        range,
+                        `Label '${label}' is defined but never referenced`,
+                        vscode.DiagnosticSeverity.Error
+                    );
+                    diagnostics.push(diagnostic);
+                }
+            }
+        }
     }
 
     public dispose() {
         this.disposables.forEach(d => d.dispose());
     }
-} 
+}

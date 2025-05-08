@@ -67,7 +67,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 + Linting support
     - Math expressions
-    - Invalid references
+    - Invalid references and links
     - Unclosed braces
 
 ### Added: Files
