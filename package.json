@@ -2,9 +2,9 @@
   "name": "typstlangsupport",
   "displayName": "TypstLangSupport",
   "description": "Syntax highlighting, auto preview, Linting",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
-    "vscode": "^1.99.0"
+    "vscode": "^1.96.0"
   },
   "categories": [
     "Other"
@@ -60,7 +60,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.99.0",
+    "@types/vscode": "^1.96.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
@@ -75,5 +75,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/TeejMcSteez/TypstVSCodeExt"
-  }
+  },
+  "author": {
+    "name": "TeejMcSteez",
+    "email": "teejmcsteez@gmail.com"
+  },
+  "license": "MIT"
 }
