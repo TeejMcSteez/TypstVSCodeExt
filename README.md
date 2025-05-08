@@ -8,7 +8,7 @@ Has basic syntax highlighting wanting to improve edge cases.
 
 ![Syntax Highlighting](./imgs/highlight.png)
 
-Preview in PDF, PNG, SVG, and HTML (experimental) format using typst CLI compiler, has alternate output options may use that instead
+Preview in PDF, PNG, SVG, and HTML (experimental) format using [Typst CLI compiler](https://github.com/typst/typst), has alternate output options may use that instead
 
 ![Preview](./imgs/preview.png)
 
