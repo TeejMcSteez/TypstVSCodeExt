@@ -33,7 +33,7 @@ Preview in PDF format using typst CLI compiler, has alternate output options may
 
 ## Install
 
-- Download [typstlangsupport-{version}.vsix](https://github.com/TeejMcSteez/TypstVSCodeExt/blob/master/typstlangsupport-0.0.3.vsix)
+- Download [typstlangsupport-{version}.vsix](https://github.com/TeejMcSteez/TypstVSCodeExt/blob/master/typstlangsupport-0.0.4.vsix)
 
 - Go to Extensions Pane in VSCode or Cursor
 
