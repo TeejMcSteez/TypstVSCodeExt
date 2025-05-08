@@ -77,3 +77,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Changed
 
 + extensions.ts to import linter and push document changes via subscriptions to linter
+
+### TODO
+
++ add raw text linting config
++ add highlight on pagebreak or maybe italics to signify a page break (optional)
++ add highlight on emoji operators ( ex: \u{1ffff} )
++ add highlight to function parameters (optional)
