@@ -41,7 +41,7 @@ Typst CLI
 
 - Cursor: Drag the vsix file to the extension pane
 
-- Add typstlandsupport-{version}.vsix to your extension file
+- Add typstlangsupport-{version}.vsix to your extension file
 
 - You now have Typst language support!
 
