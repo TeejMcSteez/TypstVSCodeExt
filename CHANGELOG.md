@@ -13,6 +13,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 + V0.0.1 Added basic Syntax Highlighting still need to match many patterns
 + V0.0.1 Added preview window that compiles .typ to .pdf into tempdir and displays it in sidebar
 + V0.0.1 Added basic favicon for .typ file
++ V0.0.1 Added full math support
++ Added label highlighting
++ V0.0.1 Added backtick rendering
 
 ### Added: Files
 
