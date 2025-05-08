@@ -16,19 +16,34 @@ Preview in PDF format using typst CLI compiler, has alternate output options may
 
 Typst CLI
 
-[Installation Steps](https://github.com/typst/typst#installation)
+[Click Here for Installation Steps](https://github.com/typst/typst#installation)
+
+### Quick Start
+
++ Windows: ```winget install Typst.Typst```
+
++ macOS: ```brew install typst```
+
++ Linux: [Snapcraft](https://snapcraft.io/typst)
+
++ Cargo ([Rust](https://rustup.rs/)): 
+    - the latest released Typst version with cargo install --locked typst-cli
+    - a development version with cargo install --git https://github.com/typst/typst --locked typst-cli
+
 
 ## Install
 
-Download typstlandsupport-{version}.vsix
+- Download typstlangsupport-{version}.vsix
 
-Go to Extension
+- Go to Extensions Pane in VSCode or Cursor
 
-Click Menu and add VSIX extension
+- VSCode: Click Menu and add VSIX extension
 
-Add typstlandsupport-{version}.vsix to your extension file
+- Cursor: Drag the vsix file to the extension pane
 
-You now have Typst language support!
+- Add typstlandsupport-{version}.vsix to your extension file
+
+- You now have Typst language support!
 
 ## Extension Settings
 
@@ -36,14 +51,15 @@ Ctrl + Shift + V to preview .typ file
 or
 type `> Compile Typst to PDF and Preview` in the command palette
 
+Edit output format in settings, options are pdf, png, svg, and html
+
 ## Known Issues
 
 All regex edge cases have not been testing and therefore mileage may very with uses.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of typstlangsupport
++ Supports basic syntax highlighting
++ Supports preview compilation (not watchable currently) with `Ctrl+Shift+V`
++ Supports Cursor had to move vscode engine and types down to 1.96.0 from 1.99.0
++ Supports multiple output types in preview 
