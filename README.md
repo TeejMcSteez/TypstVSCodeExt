@@ -14,7 +14,7 @@ Preview in PDF format using typst CLI compiler, has alternate output options may
 
 ## Requirements
 
-Typst CLI
+[Typst CLI](https://typst.app/)
 
 [Click Here for Installation Steps](https://github.com/typst/typst#installation)
 
