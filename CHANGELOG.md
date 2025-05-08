@@ -60,3 +60,20 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 + package.json to reflect settings configuration
 + extensions.ts to handle getting the output config from the vscode setttings
 + typstlangsupport-0.0.3.vsix updated new version
+
+## [V0.0.4]
+
+### Added: Features
+
++ Linting support
+    - Math expressions
+    - Invalid references
+    - Unclosed braces
+
+### Added: Files
+
++ linter.ts with linting rules
+
+### Changed
+
++ extensions.ts to import linter and push document changes via subscriptions to linter
