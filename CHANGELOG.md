@@ -4,7 +4,7 @@ All notable changes to the "typstlangsupport" extension will be documented in th
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## [V0.0.1]
 
 - Initial release
 
@@ -30,3 +30,20 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
     - Added language for language config
     - Added grammar for syntax config
     - Added icons for theme config
+
+## [V0.0.2]
+
+- Cursor integration
+
+### Added: Features
+
++ Extension now works in cursor imports
+
+### Added: Files
+
++ LICENSE.md to stop vsce yelling at me about no license
+
+### Changed
+
++ VSCode engine & types from v1.99.0 -> v1.96.0 to support Cursor
+
