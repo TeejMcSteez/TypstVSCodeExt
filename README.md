@@ -18,6 +18,18 @@ Typst CLI
 
 [Installation Steps](https://github.com/typst/typst#installation)
 
+## Install
+
+Download typstlandsupport-<version>.vsix
+
+Go to Extension
+
+Click Menu and add VSIX extension
+
+Add typstlandsupport-<version>.vsix to your extension file
+
+You now have Typst language support!
+
 ## Extension Settings
 
 Ctrl + Shift + V to preview .typ file
