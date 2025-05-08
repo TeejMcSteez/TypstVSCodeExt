@@ -12,10 +12,6 @@
             "match": "_[__]+_"
         },
         {
-            "name": "markup.raw.typst",
-            "match": "`[^`]+`"
-        },
-        {
             "name": "markup.heading.typst",
             "match": "^=+\\s.*$"
         },
@@ -55,29 +51,21 @@
             "match": "^#\\w*()"
         },
         {
-            "name": "string.other.math.inline.typst",
-            "match": "\\$(.+?)\\$",
+            "match": "(\\$)(.*?)(\\$)",
             "captures": {
-              "0": { "name": "string.other.math.inline.typst" },
-              "1": { "name": "meta.math.content.typst" }
+                "1": {
+                    "name": "markup.bold.typst"
+                },
+                "3": {
+                    "name": "markup.bold.typst"
+                }
             }
         },
         {
-            "name": "string.other.math.block.typst",
+            "name": "markup.bold.typst",
             "begin": "\\$\\$",
-            "end": "\\$\\$",
-            "beginCaptures": {
-              "0": { "name": "punctuation.definition.math.begin.typst" }
-            },
-            "endCaptures": {
-              "0": { "name": "punctuation.definition.math.end.typst" }
-            },
-            "patterns": [
-                {
-                "match": "\\\\[a-zA-Z]+",
-                "name": "markup.emphasis.typst"
-                }
-            ]
+            "end": "\\$\\$|$",
+            "patterns": []
         },
         {
             "name": "keyword.other.typst",
@@ -94,6 +82,24 @@
         {
             "name": "constant.language.typst",
             "match": "\\b(?:true|false|null)\\b"
+        },
+        {
+            "name": "markup.bold.typst",
+            "match": "\\<\\w+\\>"
+        },
+        {
+            "name": "markup.inline.raw.typst",
+            "begin": "\\`",
+            "end": "\\`",
+            "patterns": []
+        },
+        {
+            "name": "markup.inline.raw.typst",
+            "match": "`[^`]*?`"
+        },
+        {
+            "name": "markup.bold.typst",
+            "match": "\\@\\w+"
         }
     ]
 }
