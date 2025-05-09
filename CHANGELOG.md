@@ -63,6 +63,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [V0.0.4]
 
+- Added basic linting
+
 ### Added: Features
 
 + Linting support
@@ -78,6 +80,22 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 + extensions.ts to import linter and push document changes via subscriptions to linter
 
+## [V0.0.5]
+
+- Improving linting
+
+### Added: Features
+
++ Added multiline math suport with error matching for new lines
+
+### Added: Files
+
+### Changed
+
++ linter.ts
++ typst.tmLanguage.json (removed double math)
++ package.json - bump package version for new linting changes
+
 ### TODO
 
 + add raw text linting config
@@ -85,6 +103,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 + add highlight on emoji operators ( ex: \u{1ffff} )
 + add highlight to function parameters (optional)
 + fix indented + or - on other + or -
-+ block math expressions ($$$$) do not exist remove the functionality and check for double types math operators
++ block math expressions ($$$$) do not exist remove the functionality and check for double types math operators ✅
 + math operators $ x $ must have a space in them to be counted in numbering check for that
-+ Fix multi line math expressions not being captured by regex and erroring
++ Fix multi line math expressions not being captured by regex and erroring ✅
