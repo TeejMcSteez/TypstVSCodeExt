@@ -44,6 +44,8 @@ export class TypstLinter {
         this.checkForUnclosedBraces(text, document, diagnostics);
         this.checkForUnclosedMath(text, document, diagnostics);
         this.checkForInvalidReferences(text, document, diagnostics);
+        this.checkForEmptyMath(text, document, diagnostics);
+        this.checkForGapingMath(text, document, diagnostics);
 
         this.diagnosticCollection.set(document.uri, diagnostics);
     }
@@ -71,17 +73,63 @@ export class TypstLinter {
         lines.forEach((line, i) => {
             // Replace escaped dollar signs with a placeholder to not count them
             const processedLine = line.replace(/\\\$/g, 'PLACEHOLDER');
-            const openMath = (processedLine.match(/\$/g) || []).length;
-            if (openMath % 2 !== 0) {
+            const dollarCount = (processedLine.match(/\$/g) || []).length;
+            
+            // If we have an odd number of dollar signs, we have an unclosed math expression
+            if (dollarCount % 2 !== 0) {
                 const range = new vscode.Range(i, 0, i, line.length);
                 const diagnostic = new vscode.Diagnostic(
                     range,
-                    'Unclosed math expression',
+                    'Unclosed math expression - odd number of dollar signs',
                     vscode.DiagnosticSeverity.Warning
                 );
                 diagnostics.push(diagnostic);
             }
         });
+    }
+
+    private checkForEmptyMath(text: string, document: vscode.TextDocument, diagnostics: vscode.Diagnostic[]) {
+        const lines = text.split('\n');
+        lines.forEach((line, i) => {
+            const processedLine = line.replace(/\\\$/g, 'PLACEHOLDER');
+            const emptyMath = (processedLine.match(/\$\$/g) || []).length;
+            const emptyDisplayMath = (processedLine.match(/\$\s+\$/g) || []).length;
+            
+            if (emptyMath > 0 || emptyDisplayMath > 0) {
+                const range = new vscode.Range(i, 0, i, line.length);
+                const diagnostic = new vscode.Diagnostic(
+                    range,
+                    'Empty Math Expression, escape dollar signs with \\',
+                    vscode.DiagnosticSeverity.Warning
+                );
+                diagnostics.push(diagnostic);
+            }
+        });
+    }
+
+    private checkForGapingMath(text: string, document: vscode.TextDocument, diagnostics: vscode.Diagnostic[]) {
+        // First replace escaped dollar signs to not count them
+        const processedText = text.replace(/\\\$/g, 'PLACEHOLDER');
+        
+        // Find all math blocks that might contain newlines
+        const mathBlocks = processedText.match(/\$[\s\S]*?\$/g) || [];
+        
+        for (const block of mathBlocks) {
+            // If the block contains newlines, it's a gaping math block
+            if (block.includes('\n')) {
+                const start = processedText.indexOf(block);
+                const end = start + block.length;
+                const startLine = document.positionAt(start).line;
+                const endLine = document.positionAt(end).line;
+                const range = new vscode.Range(startLine, 0, endLine, document.lineAt(endLine).text.length);
+                const diagnostic = new vscode.Diagnostic(
+                    range,
+                    'Gaping math block detected - math expression contains newlines',
+                    vscode.DiagnosticSeverity.Warning
+                );
+                diagnostics.push(diagnostic);
+            }
+        }
     }
 
     private checkForInvalidReferences(text: string, document: vscode.TextDocument, diagnostics: vscode.Diagnostic[]) {

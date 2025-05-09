@@ -63,8 +63,8 @@
         },
         {
             "name": "markup.bold.typst",
-            "begin": "\\$\\$",
-            "end": "\\$\\$|$",
+            "begin": "\\$",
+            "end": "\\$|$",
             "patterns": []
         },
         {
